@@ -28,7 +28,7 @@ const Navbar = () => {
         </a>
 
         {/* Center Nav Links */}
-        <nav className="hidden lg:flex flex-row items-center justify-center gap-1 rounded-full px-4 py-2 bg-white/80 backdrop-blur-md shadow-sm border border-neutral-100">
+        <nav className="hidden lg:flex flex-row items-center justify-center gap-2 px-4 py-2">
           {menuItems.map((item) => (
             <div
               key={item.name}
