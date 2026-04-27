@@ -1,33 +1,5 @@
 import React from 'react';
 import PhoneCarousel from './PhoneCarousel';
-import Navbar from './Navbar';
-import { motion } from 'framer-motion';
-
-const MarqueeRow = ({ tags, direction = 1, speed = 25 }) => {
-  const duplicatedTags = [...tags, ...tags, ...tags, ...tags];
-  return (
-    <div className="flex w-full overflow-hidden py-3">
-      <motion.div
-        className="flex gap-4 items-center whitespace-nowrap"
-        animate={{ x: direction > 0 ? [0, -1000] : [-1000, 0] }}
-        transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
-      >
-        {duplicatedTags.map((tag, i) => (
-          <div key={i} className={`flex items-center gap-3 px-5 py-2.5 rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.03)] text-base font-semibold ${tag.safe ? 'bg-white/90 text-[#1F3824] border border-white/50' : 'bg-white/90 text-[#8C1818] border border-white/50'}`}>
-            <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] text-white ${tag.safe ? 'bg-[#386641]' : 'bg-[#C13A3A]'}`}>
-              {tag.safe ? "✓" : "✕"}
-            </div>
-            {tag.label}
-          </div>
-        ))}
-      </motion.div>
-    </div>
-  );
-};
-
-const row1 = [{ label: "Non-GMO", safe: true }, { label: "Saccharin", safe: false }, { label: "Cholesterol-Free", safe: true }, { label: "High Fibre", safe: true }, { label: "Organic Ingredients", safe: true }];
-const row2 = [{ label: "Artificial Colors", safe: false }, { label: "Gluten-Free", safe: true }, { label: "Sodium Nitrite", safe: false }, { label: "Aspartame", safe: false }, { label: "TBHQ", safe: false }];
-
 
 const OriginalUI = () => {
   return (
@@ -41,7 +13,450 @@ const OriginalUI = () => {
         <div className="relative w-full z-10">
           <div className="pb-12 p-2">
             <div className="w-full relative z-[100] __className_5f0e35">
-              <Navbar />
+              <div
+                className="z-[60] mx-auto hidden w-full flex-row items-center justify-between self-start rounded-full lg:flex font-pall sticky inset-x-0 top-40"
+              >
+                <div className="flex flex-1 flex-row items-center justify-between">
+                  <a
+                    aria-label="Return to homepage"
+                    className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
+                    href="/"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="235"
+                      height="43"
+                      viewBox="0 0 235 43"
+                      fill="none"
+                      className="w-60 md:w-70 h-14"
+                    >
+                      <path
+                        d="M51.3794 22.8744C50.7456 22.6747 46.7038 24.7708 46.4888 25.6298C46.2737 26.4887 54.0113 42.1087 54.7547 42.4371C55.498 42.7654 58.468 42.7291 58.8188 42.4371C59.1695 42.145 67.2049 26.4956 66.9432 25.6298C66.6816 24.7638 62.7917 21.8492 61.5307 22.8744C60.2698 23.8996 56.4767 33.0691 56.4767 33.0691C56.4767 33.0691 52.0133 23.0741 51.3794 22.8744Z"
+                        fill="#AEB93E"
+                      ></path>
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M75.784 34.6549C74.9453 34.6396 74.1819 34.6257 73.5794 34.6257C73.5794 35.1707 73.8896 36.1295 76.0495 36.551C77.4942 36.8329 79.4763 36.2989 80.783 35.947C81.4298 35.7728 81.9112 35.643 82.0796 35.6792C82.5881 35.7881 84.9857 38.8758 84.1137 40.5468C83.2419 42.2178 73.325 44.361 69.4745 40.1109C65.624 35.8608 65.5514 30.4845 68.1668 26.852C70.7824 23.2194 73.979 22.7109 76.3402 22.7109C78.7012 22.7109 81.6239 23.0979 84.1137 26.2344C86.6036 29.3712 84.4095 34.1559 83.4599 34.4078C82.0959 34.7696 78.5345 34.7049 75.784 34.6549ZM73.5793 31.1021C73.7851 30.2787 74.6744 28.7733 76.558 28.632C78.9653 28.4514 78.709 30.1096 78.5748 30.9787C78.5681 31.0219 78.5616 31.0632 78.5559 31.1021H73.5793Z"
+                        fill="#AEB93E"
+                      ></path>
+                      <path
+                        d="M32.4408 13.3464C32.0595 12.6154 26.9215 13.2964 26.636 13.7735C26.3506 14.2505 27.3026 41.5301 27.4797 41.8046C27.657 42.079 37.0964 42.036 37.3851 41.8046C37.6739 41.5731 37.7469 36.9571 37.3851 36.5275C37.0234 36.0979 32.8783 36.1003 32.8783 36.1003C32.8783 36.1003 32.8219 14.0773 32.4408 13.3464Z"
+                        fill="#AEB93E"
+                      ></path>
+                      <g filter="url(#filter0_f_205_2845)">
+                        <path
+                          d="M28.6893 15.2159C29.6239 15.0699 30.3316 14.6324 30.2701 14.2386C30.2086 13.8448 29.4011 13.6439 28.4666 13.7899C27.532 13.9359 26.8243 14.3734 26.8858 14.7672C26.9473 15.161 27.7548 15.3619 28.6893 15.2159Z"
+                          fill="#FFFA6B"
+                          fillOpacity="0.33"
+                        ></path>
+                      </g>
+                      <path
+                        d="M44.7833 23.9464C43.9394 23.3245 39.7642 23.1024 38.9202 23.9464C38.0763 24.7903 38.3872 40.6473 38.9202 41.58C39.4532 42.5128 43.9394 42.2907 44.7833 41.58C45.6273 40.8693 45.6273 24.5682 44.7833 23.9464Z"
+                        fill="#AEB93E"
+                      ></path>
+                      <path
+                        d="M44.7833 14.607C43.9394 13.9851 39.7642 13.7631 38.9202 14.607C38.0763 15.4508 38.3872 19.8595 38.9202 20.7923C39.4532 21.725 43.9394 21.503 44.7833 20.7923C45.6273 20.0816 45.6273 15.2288 44.7833 14.607Z"
+                        fill="#AEB93E"
+                      ></path>
+                      <g filter="url(#filter1_f_205_2845)">
+                        <path
+                          d="M41.1733 15.9592C42.2538 15.8227 43.0892 15.3915 43.0392 14.9961C42.9892 14.6007 42.0729 14.3908 40.9924 14.5273C39.912 14.6638 39.0766 15.095 39.1266 15.4904C39.1765 15.8858 40.0929 16.0957 41.1733 15.9592Z"
+                          fill="#FFFA6B"
+                          fillOpacity="0.33"
+                        ></path>
+                      </g>
+                      <g filter="url(#filter2_f_205_2845)">
+                        <path
+                          d="M49.1885 25.9074C50.2001 25.5039 50.9004 24.8767 50.7527 24.5065C50.605 24.1363 49.6653 24.1633 48.6538 24.5668C47.6423 24.9703 46.942 25.5975 47.0896 25.9677C47.2373 26.3379 48.177 26.3109 49.1885 25.9074Z"
+                          fill="#FFFA6B"
+                          fillOpacity="0.33"
+                        ></path>
+                      </g>
+                      <g filter="url(#filter3_f_205_2845)">
+                        <path
+                          d="M62.2052 25.3631C62.8944 24.5199 63.2029 23.6319 62.8943 23.3797C62.5857 23.1274 61.7768 23.6065 61.0877 24.4498C60.3985 25.293 60.09 26.181 60.3986 26.4332C60.7072 26.6855 61.5161 26.2064 62.2052 25.3631Z"
+                          fill="#FFFA6B"
+                          fillOpacity="0.33"
+                        ></path>
+                      </g>
+                      <g filter="url(#filter4_f_205_2845)">
+                        <path
+                          d="M72.2898 26.1652C73.668 25.2854 74.5437 24.1936 74.2456 23.7267C73.9475 23.2598 72.5886 23.5945 71.2104 24.4743C69.8321 25.3541 68.9565 26.4459 69.2545 26.9128C69.5526 27.3797 70.9115 27.045 72.2898 26.1652Z"
+                          fill="#FFFA6B"
+                          fillOpacity="0.33"
+                        ></path>
+                      </g>
+                      <g filter="url(#filter5_f_205_2845)">
+                        <path
+                          d="M41.2046 25.3268C42.2809 25.1612 43.1043 24.7076 43.0437 24.3137C42.9831 23.9197 42.0614 23.7347 40.985 23.9003C39.9087 24.0659 39.0853 24.5195 39.1459 24.9135C39.2065 25.3074 40.1282 25.4925 41.2046 25.3268Z"
+                          fill="#FFFA6B"
+                          fillOpacity="0.33"
+                        ></path>
+                      </g>
+                      <path
+                        d="M11.6445 7.9541C12.4104 9.37799 12.8738 10.4285 12.7638 12.2955"
+                        stroke="#B47E54"
+                        strokeWidth="1.74943"
+                        strokeLinecap="round"
+                      ></path>
+                      <path
+                        d="M25.1663 27.0132C25.1663 35.8274 22.081 42.9728 12.5992 42.9728C3.1175 42.9728 0.0322266 35.8274 0.0322266 27.0132C0.0322266 18.1991 7.69597 12.3589 12.5992 12.3589C17.5025 12.3589 25.1663 18.1991 25.1663 27.0132Z"
+                        fill="#AEB93E"
+                      ></path>
+                      <path
+                        d="M25.1668 27.0132C25.1668 35.8272 22.0816 42.9726 12.5998 42.9726C8.59668 42.9726 5.73372 41.6989 3.76172 39.5639C6.2414 40.6582 9.69106 41.6785 13.4808 41.3384C17.2705 40.9983 23.0118 39.5639 25.1668 27.0132Z"
+                        fill="black"
+                        fillOpacity="0.17"
+                      ></path>
+                      <path
+                        d="M22.2615 1.75041C21.7345 0.808721 17.9008 0.622276 15.7399 1.7504C13.5792 2.87853 12.5756 5.55323 12.7304 7.92803C13.9888 8.30191 15.5759 8.67554 18.2322 7.56102C20.8882 6.44651 22.6101 3.11565 22.2615 1.75041Z"
+                        fill="#AEB93E"
+                      ></path>
+                      <path
+                        d="M20.5462 2.678C20.721 2.20308 16.6358 6.00599 13.0654 7.26714C13.0654 7.26714 15.7484 6.79644 17.2876 5.70094C18.8267 4.60545 20.2372 3.5175 20.5462 2.678Z"
+                        fill="#8F9838"
+                      ></path>
+                      <path
+                        d="M5.94531 23.5363C5.94531 22.4632 6.81526 21.5933 7.8884 21.5933C8.96155 21.5933 9.83151 22.4632 9.83151 23.5363V24.0836C9.83151 25.1567 8.96155 26.0266 7.8884 26.0266C6.81526 26.0266 5.94531 25.1567 5.94531 24.0836V23.5363Z"
+                        fill="#2D2D2D"
+                      ></path>
+                      <path
+                        d="M15.3652 23.5363C15.3652 22.4632 16.2351 21.5933 17.3083 21.5933C18.3814 21.5933 19.2514 22.4632 19.2514 23.5363V24.0836C19.2514 25.1567 18.3814 26.0266 17.3083 26.0266C16.2351 26.0266 15.3652 25.1567 15.3652 24.0836V23.5363Z"
+                        fill="#2D2D2D"
+                      ></path>
+                      <path
+                        d="M11.168 25.903C11.4712 26.3679 11.9867 26.6672 12.6389 26.6672C13.4864 26.6672 13.8868 26.378 14.2133 25.8237"
+                        stroke="#2D2D2D"
+                        strokeWidth="0.728929"
+                        strokeLinecap="round"
+                      ></path>
+                      <path
+                        d="M8.89323 23.2728C9.19778 23.2728 9.44467 23.0259 9.44467 22.7214C9.44467 22.4168 9.19778 22.1699 8.89323 22.1699C8.58868 22.1699 8.3418 22.4168 8.3418 22.7214C8.3418 23.0259 8.58868 23.2728 8.89323 23.2728Z"
+                        fill="#D9D9D9"
+                      ></path>
+                      <path
+                        d="M18.3249 23.2728C18.6294 23.2728 18.8763 23.0259 18.8763 22.7214C18.8763 22.4168 18.6294 22.1699 18.3249 22.1699C18.0203 22.1699 17.7734 22.4168 17.7734 22.7214C17.7734 23.0259 18.0203 23.2728 18.3249 23.2728Z"
+                        fill="#D9D9D9"
+                      ></path>
+                      <g filter="url(#filter6_f_205_2845)">
+                        <path
+                          d="M19.2524 29.4652C20.2579 29.4652 21.0731 28.65 21.0731 27.6444C21.0731 26.6389 20.2579 25.8237 19.2524 25.8237C18.2468 25.8237 17.4316 26.6389 17.4316 27.6444C17.4316 28.65 18.2468 29.4652 19.2524 29.4652Z"
+                          fill="#FCC1C1"
+                        ></path>
+                      </g>
+                      <g filter="url(#filter7_f_205_2845)">
+                        <path
+                          d="M5.94572 29.2679C6.95127 29.2679 7.76644 28.4527 7.76644 27.4472C7.76644 26.4416 6.95127 25.6265 5.94572 25.6265C4.94016 25.6265 4.125 26.4416 4.125 27.4472C4.125 28.4527 4.94016 29.2679 5.94572 29.2679Z"
+                          fill="#FCC1C1"
+                        ></path>
+                      </g>
+                      <defs>
+                        <filter
+                          id="filter0_f_205_2845"
+                          x="26.1092"
+                          y="12.9695"
+                          width="4.93693"
+                          height="3.06681"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          ></feFlood>
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            stdDeviation="0.386332"
+                            result="effect1_foregroundBlur_205_2845"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="filter1_f_205_2845"
+                          x="38.3514"
+                          y="13.7132"
+                          width="5.46232"
+                          height="3.06047"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          ></feFlood>
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            stdDeviation="0.386332"
+                            result="effect1_foregroundBlur_205_2845"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="filter2_f_205_2845"
+                          x="46.2976"
+                          y="23.4729"
+                          width="5.24748"
+                          height="3.52824"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          ></feFlood>
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            stdDeviation="0.386332"
+                            result="effect1_foregroundBlur_205_2845"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="filter3_f_205_2845"
+                          x="59.5066"
+                          y="22.5398"
+                          width="4.2797"
+                          height="4.73332"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          ></feFlood>
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            stdDeviation="0.386332"
+                            result="effect1_foregroundBlur_205_2845"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="filter4_f_205_2845"
+                          x="68.4236"
+                          y="22.7434"
+                          width="6.65275"
+                          height="5.15275"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          ></feFlood>
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            stdDeviation="0.386332"
+                            result="effect1_foregroundBlur_205_2845"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="filter5_f_205_2845"
+                          x="38.3699"
+                          y="23.0672"
+                          width="5.44963"
+                          height="3.09318"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          ></feFlood>
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            stdDeviation="0.386332"
+                            result="effect1_foregroundBlur_205_2845"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="filter6_f_205_2845"
+                          x="15.1136"
+                          y="23.5057"
+                          width="8.27759"
+                          height="8.27759"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          ></feFlood>
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            stdDeviation="1.159"
+                            result="effect1_foregroundBlur_205_2845"
+                          ></feGaussianBlur>
+                        </filter>
+                        <filter
+                          id="filter7_f_205_2845"
+                          x="1.80701"
+                          y="23.3085"
+                          width="8.27759"
+                          height="8.27759"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood
+                            flood-opacity="0"
+                            result="BackgroundImageFix"
+                          ></feFlood>
+                          <feBlend
+                            mode="normal"
+                            in="SourceGraphic"
+                            in2="BackgroundImageFix"
+                            result="shape"
+                          ></feBlend>
+                          <feGaussianBlur
+                            stdDeviation="1.159"
+                            result="effect1_foregroundBlur_205_2845"
+                          ></feGaussianBlur>
+                        </filter>
+                      </defs></svg
+                  ></a>
+                </div>
+                <div
+                  className="absolute inset-x-0 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800"
+                >
+                  <nav
+                    className="relative flex justify-center gap-2 rounded-full font-pall px-4 py-3"
+                  >
+                    <div className="relative">
+                      <p
+                        className="cursor-pointer flex items-center gap-1 text-neutral-700 hover:opacity-[0.9] px-4 py-2 hover:bg-black/[0.03] rounded-lg"
+                      >
+                        <a className="font-inter" href="#">Solutions</a
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="tabler-icon tabler-icon-chevron-down h-4 w-4 transition-all"
+                        >
+                          <path d="M6 9l6 6l6 -6"></path>
+                        </svg>
+                      </p>
+                    </div>
+                    <a
+                      className="relative text-neutral-600 px-4 py-2 font-inter rounded-lg hover:bg-black/[0.03]"
+                      href="/#features"
+                      ><span className="block">Features</span></a
+                    ><a
+                      className="relative text-neutral-600 px-4 py-2 font-inter rounded-lg hover:bg-black/[0.03]"
+                      href="/#pricing"
+                      ><span className="block">Pricing</span></a
+                    >
+                    <div className="relative">
+                      <p
+                        className="cursor-pointer flex items-center gap-1 text-neutral-700 hover:opacity-[0.9] px-4 py-2 hover:bg-black/[0.03] rounded-lg"
+                      >
+                        <a className="font-inter" href="/blogs">Blog</a
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="tabler-icon tabler-icon-chevron-down h-4 w-4 transition-all"
+                        >
+                          <path d="M6 9l6 6l6 -6"></path>
+                        </svg>
+                      </p>
+                    </div>
+                    <a
+                      className="relative text-neutral-600 px-4 py-2 font-inter rounded-lg hover:bg-black/[0.03]"
+                      href="/restaurants"
+                      ><span className="block">Restaurants</span></a
+                    >
+                    <div className="relative">
+                      <p
+                        className="cursor-pointer flex items-center gap-1 text-neutral-700 hover:opacity-[0.9] px-4 py-2 hover:bg-black/[0.03] rounded-lg"
+                      >
+                        <a className="font-inter" href="/foods">Food</a
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="tabler-icon tabler-icon-chevron-down h-4 w-4 transition-all"
+                        >
+                          <path d="M6 9l6 6l6 -6"></path>
+                        </svg>
+                      </p>
+                    </div>
+                  </nav>
+                </div>
+                <a
+                  className="text-primary mr-4 cursor-pointer relative z-40"
+                  href="/sign-in"
+                  >Sign in</a
+                ><a
+                  className="inline-flex items-center cursor-pointer font-sans justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive text-primary-foreground shadow-md hover:bg-primary/90 px-6 py-3 has-[&gt;svg]:px-4 text-base bg-primary relative z-50 flex items-center justify-center"
+                  target="_blank"
+                  data-slot="button"
+                  href="https://apps.apple.com/us/app/olive-holistic-food-scanner/id6739765789"
+                  >Get Olive<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="tabler-icon tabler-icon-arrow-right"
+                  >
+                    <path d="M5 12l14 0"></path>
+                    <path d="M13 18l6 -6"></path>
+                    <path d="M13 6l6 6"></path></svg
+                ></a>
+              </div>
               <div
                 className="relative mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-4 py-2 lg:hidden font-pall"
               >
@@ -3942,401 +4357,6 @@ const OriginalUI = () => {
         </div>
       </div>
       <div className="-mt-24 flex flex-col px-4 md:px-8 pb-24 gap-8">
-        <div
-          className="p-4 bg-white max-w-5xl mx-auto rounded-2xl grid grid-cols-1 lg:grid-cols-2"
-        >
-          <div className="flex flex-col gap-4 justify-between p-4">
-            <div className="flex relative text-primary items-center justify-start">
-              <h3
-                className="font-pall text-primary max-w-xl font-[500] text-xl md:text-3xl"
-              >
-                Achieve Nutritional Clarity
-              </h3>
-            </div>
-            <ul className="flex flex-col gap-3 max-w-sm self-start">
-              <li className="flex items-start gap-4 text-primary">
-                <div className="w-6 flex-shrink-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="none"
-                    className="tabler-icon tabler-icon-circle-check-filled w-6 h-6"
-                  >
-                    <path
-                      d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="md:text-lg text-sm">
-                  Olive breaks down every ingredient into clear, actionable
-                  information.
-                </div>
-              </li>
-              <li className="flex items-start gap-4 text-primary">
-                <div className="w-6 flex-shrink-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="none"
-                    className="tabler-icon tabler-icon-circle-check-filled w-6 h-6"
-                  >
-                    <path
-                      d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="md:text-lg text-sm">
-                  Olive scores products out of 100 based on additives, seedoils,
-                  processing level, and detected toxins.
-                </div>
-              </li>
-              <li className="flex items-start gap-4 text-primary">
-                <div className="w-6 flex-shrink-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="none"
-                    className="tabler-icon tabler-icon-circle-check-filled w-6 h-6"
-                  >
-                    <path
-                      d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="md:text-lg text-sm">
-                  Our ranking system is designed by registered holistic health
-                  experts, ensuring you and your family make informed decisions
-                  and improve health outcomes.
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div
-              className="bg-gradient-to-b from-[#EFF6F0] to-[#9DC8A3] rounded-2xl w-full w-[300px] h-[450px] md:w-[500px] md:h-[500px]"
-            >
-              <div className="flex items-center justify-center pt-4">
-                <img
-                  alt="Product 1"
-                  draggable="false"
-                  loading="lazy"
-                  width="500"
-                  height="500"
-                  decoding="async"
-                  data-nimg="1"
-                  className="md:w-40 md:h-50 h-32 w-30 rounded-3xl border-2 border-white object-cover translate-x-20 -rotate-12 scale-90"
-                  style={{"color":"transparent"}}
-                  srcset="
-                    /assets/images/how-to/slider/product-2.png  1x,
-                    /assets/images/how-to/slider/product-2.png 2x
-                  "
-                  src="/assets/images/how-to/slider/product-2.png"
-                /><img
-                  alt="Product 1"
-                  draggable="false"
-                  loading="lazy"
-                  width="500"
-                  height="500"
-                  decoding="async"
-                  data-nimg="1"
-                  className="md:w-40 md:h-50 h-32 w-30 rounded-3xl border-2 border-white object-cover relative z-20"
-                  style={{"color":"transparent"}}
-                  srcset="
-                    /assets/images/how-to/slider/straus-ice-cream.png  1x,
-                    /assets/images/how-to/slider/straus-ice-cream.png 2x
-                  "
-                  src="/assets/images/how-to/slider/straus-ice-cream.png"
-                /><img
-                  alt="Product 1"
-                  draggable="false"
-                  loading="lazy"
-                  width="500"
-                  height="500"
-                  decoding="async"
-                  data-nimg="1"
-                  className="md:w-40 md:h-50 h-32 w-30 rounded-3xl border-2 border-white object-cover -translate-x-20 rotate-12 scale-90"
-                  style={{"color":"transparent"}}
-                  srcset="
-                    /assets/images/how-to/slider/product-3.png  1x,
-                    /assets/images/how-to/slider/product-3.png 2x
-                  "
-                  src="/assets/images/how-to/slider/product-3.png"
-                />
-              </div>
-              <div
-                className="px-4 py-3 bg-white/50 relative flex flex-row gap-4 mx-auto max-w-[90%] md:max-w-[calc(100%-200px)] mt-10 rounded-2xl"
-              >
-                <img
-                  alt="Product 1"
-                  loading="lazy"
-                  width="120"
-                  height="120"
-                  decoding="async"
-                  data-nimg="1"
-                  className="size-16 rounded-xl"
-                  style={{"color":"transparent"}}
-                  srcset="
-                    /assets/images/how-to/slider/straus-ice-cream-description.png 1x,
-                    /assets/images/how-to/slider/straus-ice-cream-description.png 2x
-                  "
-                  src="/assets/images/how-to/slider/straus-ice-cream-description.png"
-                />
-                <div className="flex flex-col gap-2">
-                  <span className="font-semibold text-xl">Straus Ice Cream</span>
-                  <div className="flex gap-2 items-center">
-                    <div
-                      className="font-semibold text-sm md:text-xl text-[#1F382499] font-inter flex items-center"
-                    >
-                      <div>
-                        <div className="flex items-center">
-                          <div
-                            className="relative inline-block w-[1ch] overflow-x-visible overflow-y-clip leading-none tabular-nums"
-                          >
-                            <div className="invisible">0</div>
-                            <span className="invisible absolute">0</span
-                            ><span className="invisible absolute">1</span
-                            ><span className="invisible absolute">2</span
-                            ><span className="invisible absolute">3</span
-                            ><span className="invisible absolute">4</span
-                            ><span className="invisible absolute">5</span
-                            ><span className="invisible absolute">6</span
-                            ><span className="invisible absolute">7</span
-                            ><span className="invisible absolute">8</span
-                            ><span className="invisible absolute">9</span>
-                          </div>
-                          <div
-                            className="relative inline-block w-[1ch] overflow-x-visible overflow-y-clip leading-none tabular-nums"
-                          >
-                            <div className="invisible">0</div>
-                            <span className="invisible absolute">0</span
-                            ><span className="invisible absolute">1</span
-                            ><span className="invisible absolute">2</span
-                            ><span className="invisible absolute">3</span
-                            ><span className="invisible absolute">4</span
-                            ><span className="invisible absolute">5</span
-                            ><span className="invisible absolute">6</span
-                            ><span className="invisible absolute">7</span
-                            ><span className="invisible absolute">8</span
-                            ><span className="invisible absolute">9</span>
-                          </div>
-                        </div>
-                      </div>
-                      /100
-                    </div>
-                    <span
-                      className="font-semibold text-sm text-[#1F382499] font-inter"
-                      >Excellent</span
-                    >
-                  </div>
-                </div>
-              </div>
-              <div
-                className="flex flex-row w-full h-full justify-around p-4 pb-0 gap-4"
-              >
-                <div
-                  className="flex flex-col gap-2 rounded-2xl w-full flex-1 bg-white/50"
-                >
-                  <div
-                    className="font-semibold text-md md:text-xl w-full justify-center pt-4 flex items-center gap-2 text-[#1F3824CC]"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      stroke="none"
-                      className="tabler-icon tabler-icon-circle-check-filled"
-                    >
-                      <path
-                        d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                      ></path></svg
-                    >Positives
-                  </div>
-                  <div
-                    className="grid grid-cols-12 grid-flow-row-dense w-full gap-1 p-2"
-                  >
-                    <div
-                      className="col-span-5 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-5 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-2 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-8 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-4 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-6 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-6 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-5 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-7 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                  </div>
-                </div>
-                <div
-                  className="flex flex-col gap-1 md:gap-2 rounded-2xl w-full flex-1 bg-white/50"
-                >
-                  <div
-                    className="font-semibold text-md md:text-xl w-full justify-center pt-4 flex items-center gap-2 text-[#7A4343CC]"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      stroke="none"
-                      className="tabler-icon tabler-icon-circle-x-filled"
-                    >
-                      <path
-                        d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z"
-                      ></path></svg
-                    >Negatives
-                  </div>
-                  <div
-                    className="grid grid-cols-12 grid-flow-row-dense w-full gap-1 p-2"
-                  >
-                    <div
-                      className="col-span-5 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-5 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-2 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-8 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-4 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-6 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-6 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-5 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                    <div
-                      className="col-span-7 h-[1.688rem] rounded-md bg-white/60"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="p-4 bg-white max-w-5xl mx-auto rounded-2xl grid grid-cols-1 lg:grid-cols-2"
-        >
-          <div className="flex flex-col gap-4 justify-between p-4">
-            <div className="flex relative text-primary items-center justify-start">
-              <h3
-                className="font-pall text-primary max-w-xl font-[500] text-xl md:text-3xl"
-              >
-                Proactive Ingredient Filtering
-              </h3>
-            </div>
-            <ul className="flex flex-col gap-3 max-w-sm self-start">
-              <li className="flex items-start gap-4 text-primary">
-                <div className="w-6 flex-shrink-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="none"
-                    className="tabler-icon tabler-icon-circle-check-filled w-6 h-6"
-                  >
-                    <path
-                      d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="md:text-lg text-sm">
-                  Olive flags harmful additives and controversial ingredients
-                  before they become mainstream concerns.
-                </div>
-              </li>
-              <li className="flex items-start gap-4 text-primary">
-                <div className="w-6 flex-shrink-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="none"
-                    className="tabler-icon tabler-icon-circle-check-filled w-6 h-6"
-                  >
-                    <path
-                      d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="md:text-lg text-sm">
-                  Keeps you ahead of potential food safety concerns.
-                </div>
-              </li>
-              <li className="flex items-start gap-4 text-primary">
-                <div className="w-6 flex-shrink-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="none"
-                    className="tabler-icon tabler-icon-circle-check-filled w-6 h-6"
-                  >
-                    <path
-                      d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="md:text-lg text-sm">
-                  Gives busy parents the confidence to make safer food choices
-                  every time.
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div className="bg-[#FFF1F2] rounded-3xl w-full w-[300px] h-[300px] md:w-[500px] md:h-[500px] relative overflow-hidden flex items-center justify-center border border-white/50">
-              <div className="absolute flex flex-col gap-4 w-[180%]" style={{ transform: "rotate(-15deg) skewX(-15deg)" }}>
-                <MarqueeRow tags={row1} direction={1} speed={25} />
-                <MarqueeRow tags={row2} direction={-1} speed={30} />
-                <MarqueeRow tags={row1} direction={1} speed={28} />
-                <MarqueeRow tags={row2} direction={-1} speed={35} />
-              </div>
-            </div>
-          </div>
-        </div>
         <div
           className="p-4 bg-white max-w-5xl mx-auto rounded-2xl grid grid-cols-1 lg:grid-cols-2"
         >
