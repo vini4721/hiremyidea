@@ -1,6 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PhoneCarousel from './PhoneCarousel';
 import Navbar from './Navbar';
+
+const AnimatedScore = ({ value }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp = null;
+    const duration = 1500; // ms
+    const end = value;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      // easeOutExpo
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      setCount(Math.floor(easeProgress * end));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [value]);
+
+  return <span>{count}</span>;
+};
 
 const OriginalUI = () => {
   return (
@@ -4071,36 +4095,7 @@ const OriginalUI = () => {
                     >
                       <div>
                         <div className="flex items-center">
-                          <div
-                            className="relative inline-block w-[1ch] overflow-x-visible overflow-y-clip leading-none tabular-nums"
-                          >
-                            <div className="invisible">0</div>
-                            <span className="invisible absolute">0</span
-                            ><span className="invisible absolute">1</span
-                            ><span className="invisible absolute">2</span
-                            ><span className="invisible absolute">3</span
-                            ><span className="invisible absolute">4</span
-                            ><span className="invisible absolute">5</span
-                            ><span className="invisible absolute">6</span
-                            ><span className="invisible absolute">7</span
-                            ><span className="invisible absolute">8</span
-                            ><span className="invisible absolute">9</span>
-                          </div>
-                          <div
-                            className="relative inline-block w-[1ch] overflow-x-visible overflow-y-clip leading-none tabular-nums"
-                          >
-                            <div className="invisible">0</div>
-                            <span className="invisible absolute">0</span
-                            ><span className="invisible absolute">1</span
-                            ><span className="invisible absolute">2</span
-                            ><span className="invisible absolute">3</span
-                            ><span className="invisible absolute">4</span
-                            ><span className="invisible absolute">5</span
-                            ><span className="invisible absolute">6</span
-                            ><span className="invisible absolute">7</span
-                            ><span className="invisible absolute">8</span
-                            ><span className="invisible absolute">9</span>
-                          </div>
+                          <span className="text-[#1F3824]"><AnimatedScore value={96} /></span>
                         </div>
                       </div>
                       /100
