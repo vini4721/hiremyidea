@@ -1,4 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+const SparkleField = ({ count = 12, color = '#1F3824' }) => {
+  const stars = ['✦', '★', '✧'];
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-visible">
+      {[...Array(count)].map((_, i) => {
+        const top = Math.floor(Math.random() * 80) + 10;
+        const left = Math.floor(Math.random() * 80) + 10;
+        const size = Math.floor(Math.random() * 12) + 6;
+        const delay = (Math.random() * 2).toFixed(2);
+        const duration = (Math.random() * 1.5 + 1).toFixed(2);
+        const char = stars[i % stars.length];
+        return (
+          <div
+            key={i}
+            className="absolute animate-sparkle opacity-25"
+            style={{
+              top: `${top}%`,
+              left: `${left}%`,
+              fontSize: `${size}px`,
+              color: color,
+              animationDelay: `${delay}s`,
+              animationDuration: `${duration}s`,
+            }}
+          >
+            {char}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 const Hero = () => {
   return (
@@ -57,8 +89,13 @@ const Hero = () => {
                  <div className="w-3/4 h-2 bg-gray-200 rounded animate-pulse"></div>
               </div>
               <div className="flex-1 w-full bg-gray-50 flex items-center justify-center relative overflow-hidden p-6">
+                 <SparkleField count={15} color="#AEB93E" />
                  <img src="/assets/images/how-to/slider/straus-ice-cream.png" alt="Product Scan" className="w-full h-auto object-contain relative z-0" />
-                 <div className="absolute w-[80%] h-1 bg-[#AEB93E] shadow-[0_0_15px_4px_rgba(174,185,62,0.6)] rounded-full animate-scanner z-10"></div>
+                 <div className="absolute w-[80%] h-1 bg-[#AEB93E] shadow-[0_0_15px_4px_rgba(174,185,62,0.6)] rounded-full animate-scanner z-10 overflow-visible">
+                    <div className="absolute -top-1 left-[15%] text-[8px] text-white animate-sparkle">✦</div>
+                    <div className="absolute -bottom-1 left-[45%] text-[10px] text-white animate-sparkle" style={{"animationDelay":"0.5s"}}>✦</div>
+                    <div className="absolute -top-2 left-[75%] text-[9px] text-white animate-sparkle" style={{"animationDelay":"1s"}}>✦</div>
+                 </div>
               </div>
            </div>
         </div>

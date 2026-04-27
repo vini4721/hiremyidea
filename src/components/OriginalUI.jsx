@@ -26,6 +26,107 @@ const AnimatedScore = ({ value }) => {
   return <span>{count}</span>;
 };
 
+const SparkleField = ({ count = 12, color = '#1F3824' }) => {
+  const stars = ['✦', '★', '✧'];
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-visible">
+      {[...Array(count)].map((_, i) => {
+        const top = Math.floor(Math.random() * 80) + 10;
+        const left = Math.floor(Math.random() * 80) + 10;
+        const size = Math.floor(Math.random() * 12) + 6;
+        const delay = (Math.random() * 2).toFixed(2);
+        const duration = (Math.random() * 1.5 + 1).toFixed(2);
+        const char = stars[i % stars.length];
+        return (
+          <div
+            key={i}
+            className="absolute animate-sparkle opacity-25"
+            style={{
+              top: `${top}%`,
+              left: `${left}%`,
+              fontSize: `${size}px`,
+              color: color,
+              animationDelay: `${delay}s`,
+              animationDuration: `${duration}s`,
+            }}
+          >
+            {char}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const FAQ_DATA = [
+  {
+    question: "What is the Food Scanner App and how does it work?",
+    answer: "Olive is a comprehensive tool designed to help busy parents make informed food choices. By scanning product barcodes, it quickly identifies harmful ingredients and suggests safer alternatives, ensuring that you always stay ahead of potential health risks."
+  },
+  {
+    question: "How does Olive ensure the accuracy of the Food Scanner App results?",
+    answer: "Olive leverages an extensive, up-to-date food database and expert nutritional guidelines to offer precise feedback. The Food Scanner App cross-references real-world data with independent analyses to deliver reliable, actionable insights tailored for your family's needs."
+  },
+  {
+    question: "Which products can I scan with the Food Scanner App?",
+    answer: "Olive is versatile, allowing you to scan a wide range of food and bottled water products. Olive's technology is designed to pinpoint nutritional details and detect potential contaminants, making it easier than ever to keep your family safe."
+  },
+  {
+    question: "Can the Food Scanner App be customized to my family's dietary needs?",
+    answer: "Absolutely. With Olive's fully customizable filters, the food scanner app lets you set dietary preferences and allergies. This personalization ensures that every recommendation, from ingredient filtering to healthier product suggestions, aligns perfectly with your family's unique needs."
+  },
+  {
+    question: "Is my data secure when I use the Olive?",
+    answer: "Yes, your privacy is our top priority. Olive's food scanner app employs robust security protocols to safeguard your personal information while delivering transparent and accurate nutritional insights, allowing you to rest easy with every scan."
+  },
+  {
+    question: "When will the Android version of the Food Scanner App be available?",
+    answer: "Olive is currently available on iOS, with plans to launch the Android version soon. We understand how crucial it is for every parent to access reliable nutritional data, and the food scanner app is constantly evolving to meet that need."
+  }
+];
+
+const FAQItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-[#386641]/10 p-6 py-2">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between py-4 text-left group"
+      >
+        <h3 className="text-lg font-medium text-[#1F3824] group-hover:text-[#386641] transition-colors">
+          {question}
+        </h3>
+        <span className="ml-4 flex-shrink-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="41"
+            height="41"
+            fill="none"
+            viewBox="0 0 41 41"
+            className={`w-6 h-6 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          >
+            <circle cx="20.5" cy="20.5" r="16.667" fill="#1F3824" />
+            <path
+              d={isOpen ? "M12.5 20.5H28.5" : "M20.5 12.5V28.5M12.5 20.5H28.5"}
+              stroke="white"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
+        </span>
+      </button>
+      <div 
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
+      >
+        <p className="text-[#1F3824]/80 leading-relaxed">
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const OriginalUI = () => {
   return (
     <>
@@ -597,6 +698,7 @@ const OriginalUI = () => {
                 <div
                   className="relative w-full h-full flex items-center justify-center p-8"
                 >
+                  <SparkleField count={20} />
                   <img
                     alt="Barcode"
                     loading="lazy"
@@ -613,8 +715,12 @@ const OriginalUI = () => {
                     src="/assets/images/how-to/barcode-image.png"
                   />
                   <div
-                    className="absolute w-[80%] h-1 bg-[#1F3824] rounded-full animate-scanner"
-                  ></div>
+                    className="absolute w-[80%] h-1 bg-[#1F3824] rounded-full animate-scanner overflow-visible"
+                  >
+                    <div className="absolute -top-2 left-[10%] text-[10px] text-[#1F3824] animate-sparkle">✦</div>
+                    <div className="absolute -bottom-2 left-[40%] text-[8px] text-[#1F3824] animate-sparkle" style={{"animationDelay":"0.4s"}}>✦</div>
+                    <div className="absolute -top-3 left-[70%] text-[12px] text-[#1F3824] animate-sparkle" style={{"animationDelay":"0.8s"}}>✦</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -7007,189 +7113,9 @@ const OriginalUI = () => {
               >
             </div>
             <div className="space-y-2 my-16">
-              <div className="border-b border-[#386641]/10 p-6 py-2">
-                <button
-                  className="w-full flex items-center justify-between py-4 text-left"
-                >
-                  <h3 className="text-lg font-medium text-[#1F3824]">
-                    What is the Food Scanner App and how does it work?
-                  </h3>
-                  <span className="ml-4"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="41"
-                      height="41"
-                      fill="none"
-                      viewBox="0 0 41 41"
-                      className="w-6 h-6 text-[#386641]"
-                    >
-                      <g>
-                        <path
-                          fill="#1F3824"
-                          d="M8.715 8.688a16.667 16.667 0 1 1 23.568 23.568A16.666 16.666 0 0 1 8.717 8.69l-.002-.002Zm13.452 6.785a1.667 1.667 0 0 0-3.334 0v3.333H15.5a1.667 1.667 0 1 0 0 3.334h3.333v3.333a1.667 1.667 0 0 0 3.334 0V22.14H25.5a1.667 1.667 0 0 0 0-3.334h-3.333v-3.333Z"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="a">
-                          <path fill="#fff" d="M.5.473h40v40H.5z"></path>
-                        </clipPath>
-                      </defs></svg
-                  ></span>
-                </button>
-              </div>
-              <div className="border-b border-[#386641]/10 p-6 py-2">
-                <button
-                  className="w-full flex items-center justify-between py-4 text-left"
-                >
-                  <h3 className="text-lg font-medium text-[#1F3824]">
-                    How does Olive ensure the accuracy of the Food Scanner App
-                    results?
-                  </h3>
-                  <span className="ml-4"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="41"
-                      height="41"
-                      fill="none"
-                      viewBox="0 0 41 41"
-                      className="w-6 h-6 text-[#386641]"
-                    >
-                      <g>
-                        <path
-                          fill="#1F3824"
-                          d="M8.715 8.688a16.667 16.667 0 1 1 23.568 23.568A16.666 16.666 0 0 1 8.717 8.69l-.002-.002Zm13.452 6.785a1.667 1.667 0 0 0-3.334 0v3.333H15.5a1.667 1.667 0 1 0 0 3.334h3.333v3.333a1.667 1.667 0 0 0 3.334 0V22.14H25.5a1.667 1.667 0 0 0 0-3.334h-3.333v-3.333Z"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="a">
-                          <path fill="#fff" d="M.5.473h40v40H.5z"></path>
-                        </clipPath>
-                      </defs></svg
-                  ></span>
-                </button>
-              </div>
-              <div className="border-b border-[#386641]/10 p-6 py-2">
-                <button
-                  className="w-full flex items-center justify-between py-4 text-left"
-                >
-                  <h3 className="text-lg font-medium text-[#1F3824]">
-                    Which products can I scan with the Food Scanner App?
-                  </h3>
-                  <span className="ml-4"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="41"
-                      height="41"
-                      fill="none"
-                      viewBox="0 0 41 41"
-                      className="w-6 h-6 text-[#386641]"
-                    >
-                      <g>
-                        <path
-                          fill="#1F3824"
-                          d="M8.715 8.688a16.667 16.667 0 1 1 23.568 23.568A16.666 16.666 0 0 1 8.717 8.69l-.002-.002Zm13.452 6.785a1.667 1.667 0 0 0-3.334 0v3.333H15.5a1.667 1.667 0 1 0 0 3.334h3.333v3.333a1.667 1.667 0 0 0 3.334 0V22.14H25.5a1.667 1.667 0 0 0 0-3.334h-3.333v-3.333Z"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="a">
-                          <path fill="#fff" d="M.5.473h40v40H.5z"></path>
-                        </clipPath>
-                      </defs></svg
-                  ></span>
-                </button>
-              </div>
-              <div className="border-b border-[#386641]/10 p-6 py-2">
-                <button
-                  className="w-full flex items-center justify-between py-4 text-left"
-                >
-                  <h3 className="text-lg font-medium text-[#1F3824]">
-                    Can the Food Scanner App be customized to my family&#x27;s
-                    dietary needs?
-                  </h3>
-                  <span className="ml-4"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="41"
-                      height="41"
-                      fill="none"
-                      viewBox="0 0 41 41"
-                      className="w-6 h-6 text-[#386641]"
-                    >
-                      <g>
-                        <path
-                          fill="#1F3824"
-                          d="M8.715 8.688a16.667 16.667 0 1 1 23.568 23.568A16.666 16.666 0 0 1 8.717 8.69l-.002-.002Zm13.452 6.785a1.667 1.667 0 0 0-3.334 0v3.333H15.5a1.667 1.667 0 1 0 0 3.334h3.333v3.333a1.667 1.667 0 0 0 3.334 0V22.14H25.5a1.667 1.667 0 0 0 0-3.334h-3.333v-3.333Z"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="a">
-                          <path fill="#fff" d="M.5.473h40v40H.5z"></path>
-                        </clipPath>
-                      </defs></svg
-                  ></span>
-                </button>
-              </div>
-              <div className="border-b border-[#386641]/10 p-6 py-2">
-                <button
-                  className="w-full flex items-center justify-between py-4 text-left"
-                >
-                  <h3 className="text-lg font-medium text-[#1F3824]">
-                    Is my data secure when I use the Olive?
-                  </h3>
-                  <span className="ml-4"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="41"
-                      height="41"
-                      fill="none"
-                      viewBox="0 0 41 41"
-                      className="w-6 h-6 text-[#386641]"
-                    >
-                      <g>
-                        <path
-                          fill="#1F3824"
-                          d="M8.715 8.688a16.667 16.667 0 1 1 23.568 23.568A16.666 16.666 0 0 1 8.717 8.69l-.002-.002Zm13.452 6.785a1.667 1.667 0 0 0-3.334 0v3.333H15.5a1.667 1.667 0 1 0 0 3.334h3.333v3.333a1.667 1.667 0 0 0 3.334 0V22.14H25.5a1.667 1.667 0 0 0 0-3.334h-3.333v-3.333Z"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="a">
-                          <path fill="#fff" d="M.5.473h40v40H.5z"></path>
-                        </clipPath>
-                      </defs></svg
-                  ></span>
-                </button>
-              </div>
-              <div className="border-b border-[#386641]/10 p-6 py-2">
-                <button
-                  className="w-full flex items-center justify-between py-4 text-left"
-                >
-                  <h3 className="text-lg font-medium text-[#1F3824]">
-                    When will the Android version of the Food Scanner App be
-                    available?
-                  </h3>
-                  <span className="ml-4"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="41"
-                      height="41"
-                      fill="none"
-                      viewBox="0 0 41 41"
-                      className="w-6 h-6 text-[#386641]"
-                    >
-                      <g>
-                        <path
-                          fill="#1F3824"
-                          d="M8.715 8.688a16.667 16.667 0 1 1 23.568 23.568A16.666 16.666 0 0 1 8.717 8.69l-.002-.002Zm13.452 6.785a1.667 1.667 0 0 0-3.334 0v3.333H15.5a1.667 1.667 0 1 0 0 3.334h3.333v3.333a1.667 1.667 0 0 0 3.334 0V22.14H25.5a1.667 1.667 0 0 0 0-3.334h-3.333v-3.333Z"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="a">
-                          <path fill="#fff" d="M.5.473h40v40H.5z"></path>
-                        </clipPath>
-                      </defs></svg
-                  ></span>
-                </button>
-              </div>
+              {FAQ_DATA.map((item, index) => (
+                <FAQItem key={index} question={item.question} answer={item.answer} />
+              ))}
             </div>
           </div>
         </div>
