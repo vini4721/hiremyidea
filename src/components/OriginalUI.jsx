@@ -12,7 +12,7 @@ const OriginalUI = () => {
         className="border relative border-neutral-200 rounded-2xl bg-[linear-gradient(180deg,_#F5FAF6_0%,_#F5FAF6_100%)]"
       >
         <div className="relative w-full z-10">
-          <div className="pb-12 p-2">
+          <div className="pb-12 pt-1 px-2 md:px-4">
             <div className="w-full relative z-[100] __className_5f0e35">
               <Navbar />
               <div
@@ -4311,7 +4311,7 @@ const OriginalUI = () => {
                     className="relative w-full h-[40px] flex items-center overflow-hidden"
                   >
                     <div
-                      className="flex items-center gap-4"
+                      className="flex items-center gap-4 animate-infinite-slider"
                       style={{"width":"max-content"}}
                     >
                       <div className="shrink-0 mr-4">
@@ -4586,7 +4586,7 @@ const OriginalUI = () => {
                     className="relative w-full h-[40px] flex items-center overflow-hidden"
                   >
                     <div
-                      className="flex items-center gap-4"
+                      className="flex items-center gap-4 animate-infinite-slider-reverse"
                       style={{"width":"max-content"}}
                     >
                       <div className="shrink-0 mr-4">
@@ -4785,7 +4785,7 @@ const OriginalUI = () => {
                     className="relative w-full h-[40px] flex items-center overflow-hidden"
                   >
                     <div
-                      className="flex items-center gap-4"
+                      className="flex items-center gap-4 animate-infinite-slider"
                       style={{"width":"max-content"}}
                     >
                       <div className="shrink-0 mr-4">
@@ -5060,7 +5060,7 @@ const OriginalUI = () => {
                     className="relative w-full h-[40px] flex items-center overflow-hidden"
                   >
                     <div
-                      className="flex items-center gap-4"
+                      className="flex items-center gap-4 animate-infinite-slider-reverse"
                       style={{"width":"max-content"}}
                     >
                       <div className="shrink-0 mr-4">
@@ -5297,7 +5297,7 @@ const OriginalUI = () => {
                     className="relative w-full h-[40px] flex items-center overflow-hidden"
                   >
                     <div
-                      className="flex items-center gap-4"
+                      className="flex items-center gap-4 animate-infinite-slider"
                       style={{"width":"max-content"}}
                     >
                       <div className="shrink-0 mr-4">

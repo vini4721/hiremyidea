@@ -1,14 +1,6 @@
 @import "tailwindcss";
 
-@font-face { font-family: pallFont; src: url(/_next/static/media/ecaa078c765a8a2b-s.p.ttf) format("truetype"); font-display: swap; }
-@font-face { font-family: pallFont Fallback; src: local("Arial"); ascent-override: 99.36%; descent-override: 28.39%; line-gap-override: 9.13%; size-adjust: 98.63%; }
-@font-face { font-family: nueuFont; src: url(/_next/static/media/6af8e73cb65c1b09-s.p.ttf) format("truetype"); font-display: swap; font-weight: 200; font-style: normal; }
-@font-face { font-family: nueuFont; src: url(/_next/static/media/2c1a2009dd2e04c5-s.p.ttf) format("truetype"); font-display: swap; font-weight: 300; font-style: normal; }
-@font-face { font-family: nueuFont; src: url(/_next/static/media/78f9929901d65275-s.p.ttf) format("truetype"); font-display: swap; font-weight: 400; font-style: normal; }
-@font-face { font-family: nueuFont; src: url(/_next/static/media/adeb7cbcf74e47ed-s.p.ttf) format("truetype"); font-display: swap; font-weight: 600; font-style: normal; }
-@font-face { font-family: nueuFont; src: url(/_next/static/media/61cbbdd13ae1c0a2-s.p.ttf) format("truetype"); font-display: swap; font-weight: 700; font-style: normal; }
-@font-face { font-family: nueuFont; src: url(/_next/static/media/cba388e8872697df-s.p.ttf) format("truetype"); font-display: swap; font-weight: 900; font-style: normal; }
-@font-face { font-family: nueuFont Fallback; src: local("Arial"); ascent-override: 80.01%; descent-override: 23.76%; line-gap-override: 35.28%; size-adjust: 96.37%; }
+/* Custom OliveApp fonts replaced with Roboto globally */
 
 :root {
   --primary-bg: #253612;
@@ -39,10 +31,10 @@
 }
 
 @theme {
-  --font-pall: 'pallFont', 'pallFont Fallback', sans-serif;
-  --font-inter: 'nueuFont', 'nueuFont Fallback', sans-serif;
-  --font-sans: 'nueuFont', 'nueuFont Fallback', sans-serif;
-  --font-nueu: 'nueuFont', 'nueuFont Fallback', sans-serif;
+  --font-pall: 'Roboto', sans-serif;
+  --font-inter: 'Roboto', sans-serif;
+  --font-sans: 'Roboto', sans-serif;
+  --font-nueu: 'Roboto', sans-serif;
   
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
@@ -56,8 +48,12 @@
   body {
     background-color: var(--background, #FFFFFF);
     color: var(--text-primary, #111827);
-    font-family: 'nueuFont', 'nueuFont Fallback', sans-serif;
+    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
   }
 }
 
@@ -68,6 +64,16 @@
 
 .animate-infinite-slider {
   animation: infiniteSlider 20s linear infinite;
+  width: max-content;
+}
+
+@keyframes infiniteSliderReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); } 
+}
+
+.animate-infinite-slider-reverse {
+  animation: infiniteSliderReverse 20s linear infinite;
   width: max-content;
 }
 
@@ -133,7 +139,7 @@
   animation: float-right 4s ease-in-out infinite;
 }
 
-.__className_9ed02d { font-family: 'pallFont', 'pallFont Fallback', sans-serif; }
-.__className_5f0e35 { font-family: 'nueuFont', 'nueuFont Fallback', sans-serif; }
-.__variable_f367f3 { --font-pall: 'pallFont', 'pallFont Fallback', sans-serif; }
-.__variable_0d7163 { --font-inter: 'nueuFont', 'nueuFont Fallback', sans-serif; }
+.__className_9ed02d { font-family: 'Roboto', sans-serif; }
+.__className_5f0e35 { font-family: 'Roboto', sans-serif; }
+.__variable_f367f3 { --font-pall: 'Roboto', sans-serif; }
+.__variable_0d7163 { --font-inter: 'Roboto', sans-serif; }
