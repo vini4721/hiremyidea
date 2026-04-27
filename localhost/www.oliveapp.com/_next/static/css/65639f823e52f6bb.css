@@ -1,0 +1,18 @@
+@font-face {
+    font-family: pallFont;
+    src: url(/_next/static/media/ecaa078c765a8a2b-s.p.ttf) format("truetype");
+    font-display: swap
+}
+
+@font-face {
+    font-family: pallFont Fallback;
+    src: local("Arial");
+    ascent-override: 99.36%;
+    descent-override: 28.39%;
+    line-gap-override: 9.13%;
+    size-adjust: 98.63%
+}
+
+.__className_9ed02d {
+    font-family: pallFont, pallFont Fallback
+}

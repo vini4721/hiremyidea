@@ -1,0 +1,60 @@
+@font-face {
+    font-family: nueuFont;
+    src: url(/_next/static/media/6af8e73cb65c1b09-s.p.ttf) format("truetype");
+    font-display: swap;
+    font-weight: 200;
+    font-style: normal
+}
+
+@font-face {
+    font-family: nueuFont;
+    src: url(/_next/static/media/2c1a2009dd2e04c5-s.p.ttf) format("truetype");
+    font-display: swap;
+    font-weight: 300;
+    font-style: normal
+}
+
+@font-face {
+    font-family: nueuFont;
+    src: url(/_next/static/media/78f9929901d65275-s.p.ttf) format("truetype");
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: nueuFont;
+    src: url(/_next/static/media/adeb7cbcf74e47ed-s.p.ttf) format("truetype");
+    font-display: swap;
+    font-weight: 600;
+    font-style: normal
+}
+
+@font-face {
+    font-family: nueuFont;
+    src: url(/_next/static/media/61cbbdd13ae1c0a2-s.p.ttf) format("truetype");
+    font-display: swap;
+    font-weight: 700;
+    font-style: normal
+}
+
+@font-face {
+    font-family: nueuFont;
+    src: url(/_next/static/media/cba388e8872697df-s.p.ttf) format("truetype");
+    font-display: swap;
+    font-weight: 900;
+    font-style: normal
+}
+
+@font-face {
+    font-family: nueuFont Fallback;
+    src: local("Arial");
+    ascent-override: 80.01%;
+    descent-override: 23.76%;
+    line-gap-override: 35.28%;
+    size-adjust: 96.37%
+}
+
+.__className_5f0e35 {
+    font-family: nueuFont, nueuFont Fallback
+}

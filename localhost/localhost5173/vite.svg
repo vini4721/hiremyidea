@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Olive App Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+    <link
+      rel="preload"
+      href="https://www.oliveapp.com/_next/static/media/13971731025ec697-s.p.woff2"
+      as="font"
+      crossorigin=""
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="https://www.oliveapp.com/_next/static/media/2c1a2009dd2e04c5-s.p.ttf"
+      as="font"
+      crossorigin=""
+      type="font/ttf"
+    />
+    <link
+      rel="preload"
+      href="https://www.oliveapp.com/_next/static/media/61cbbdd13ae1c0a2-s.p.ttf"
+      as="font"
+      crossorigin=""
+      type="font/ttf"
+    />
+    <link
+      rel="preload"
+      href="https://www.oliveapp.com/_next/static/media/6af8e73cb65c1b09-s.p.ttf"
+      as="font"
+      crossorigin=""
+      type="font/ttf"
+    />
+    <link
+      rel="preload"
+      href="https://www.oliveapp.com/_next/static/media/78f9929901d65275-s.p.ttf"
+      as="font"
+      crossorigin=""
+      type="font/ttf"
+    />
+    <link
+      rel="preload"
+      href="https://www.oliveapp.com/_next/static/media/adeb7cbcf74e47ed-s.p.ttf"
+      as="font"
+      crossorigin=""
+      type="font/ttf"
+    />
+    <link
+      rel="preload"
+      href="https://www.oliveapp.com/_next/static/media/cba388e8872697df-s.p.ttf"
+      as="font"
+      crossorigin=""
+      type="font/ttf"
+    />
+    <link
+      rel="preload"
+      href="https://www.oliveapp.com/_next/static/media/e4af272ccee01ff0-s.p.woff2"
+      as="font"
+      crossorigin=""
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="https://www.oliveapp.com/_next/static/media/ecaa078c765a8a2b-s.p.ttf"
+      as="font"
+      crossorigin=""
+      type="font/ttf"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&amp;w=2940&amp;auto=format&amp;fit=crop"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1605522561233-768ad7a8fabf?q=80&amp;w=2940&amp;auto=format&amp;fit=crop"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&amp;w=2940&amp;auto=format&amp;fit=crop"
+    />
+    <link rel="preload" as="image" href="https://www.oliveapp.com/assets/images/showcase.jpeg" />
+    <link
+      rel="stylesheet"
+      href="https://www.oliveapp.com/_next/static/css/82391419a7931d5a.css?dpl=dpl_EVZ6kKmwpUVEu9wm55CTZLABmJie"
+      data-precedence="next"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.oliveapp.com/_next/static/css/35d1d5335a81d496.css?dpl=dpl_EVZ6kKmwpUVEu9wm55CTZLABmJie"
+      data-precedence="next"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.oliveapp.com/_next/static/css/65639f823e52f6bb.css?dpl=dpl_EVZ6kKmwpUVEu9wm55CTZLABmJie"
+      data-precedence="next"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.oliveapp.com/_next/static/css/654014d0f6b531db.css?dpl=dpl_EVZ6kKmwpUVEu9wm55CTZLABmJie"
+      data-precedence="next"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx?t=1777251642368"></script>
+  </body>
+</html>
